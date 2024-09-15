@@ -1,0 +1,31 @@
+from transformers import AutoTokenizer
+from collections import Counter
+import csv
+
+def count_tokens(file_path):
+    # Initialize the tokenizer (e.g., using a BERT-based model)
+    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+
+    with open(file_path, 'r', encoding='utf-8') as file:
+        text = file.read()
+
+    # Tokenize the text
+    tokens = tokenizer.tokenize(text)
+    
+    # Count occurrences of each token
+    token_counts = Counter(tokens)
+    
+    # Get the top 30 most common tokens
+    top_30_tokens = token_counts.most_common(30)
+    
+    # Save the results to a CSV file
+    with open('top_30_tokens.csv', 'w', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(['Token', 'Count'])
+        writer.writerows(top_30_tokens)
+    
+    print("Top 30 tokens have been written to 'top_30_tokens.csv'.")
+
+# Example usage
+file_path = '/Users/joshuahobbs/Downloads/Assignment 2/top_30_words.csv'
+count_tokens(file_path)
