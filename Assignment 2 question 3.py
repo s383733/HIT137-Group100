@@ -1,22 +1,24 @@
+#Define a function to decrypt the code based off the encryption function
+
 def decrypt(text, key):
     decrypted_text = ""
 
     for char in text:
         if char.isalpha():
-            shifted = ord(char) - key
+            shifted = ord(char) - key   #This reverses the original encryption which is ord(char) + key
 
-            if char.islower():
+            if char.islower():  #Ensures that lower case characters remain lowercase
                 if shifted > ord('z'):
                     shifted -= 26
                 elif shifted < ord('a'):
                     shifted += 26
-            elif char.isupper():
+            elif char.isupper():    #Ensures that uppercase characters remain uppercase
                 if shifted > ord('Z'):
                     shifted -= 26
                 elif shifted < ord('A'):
                     shifted += 26
 
-            decrypted_text += chr(shifted)
+            decrypted_text += chr(shifted)  #Adds decrypted characters to the new decrypted text as the function iterates through the encrypted text
         else:
             decrypted_text += char
 
@@ -68,7 +70,7 @@ cevag(tybony_inevnoyr)
 cevag(zl_qvpg)
 cevag(zl_frg)
 """
-decrypted_code = decrypt(encrypted_code, key)
+decrypted_code = decrypt(encrypted_code, key) #Decryption of original encrypted code
 print(decrypted_code)
 
 
