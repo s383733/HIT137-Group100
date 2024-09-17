@@ -90,7 +90,7 @@ def process_numbers(numbers):  # Add parameter 'numbers'
     return numbers
 
 my_set = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1}
-result = process_numbers(numbers=my_set)
+new_set = set(process_numbers(numbers=my_set))
 
 def modify_dict(): 
     local_variable = 10 
@@ -102,6 +102,8 @@ def update_global():
     global global_variable 
     global_variable += 10
 
+update_global() #Call the function to ensure global value is updated before printing
+
 for i in range(5): 
     print(i)
     # Remove i += 1 since it's redundant in this loop
@@ -112,6 +114,6 @@ if my_set is not None and my_dict['key4'] == 10:
 if 5 not in my_dict:
     print("5 not found in the dictionary!")
 
-print(global_variable)
-print(my_dict)
-print(my_set)
+print(global_variable) 
+print(my_dict) #Prints the new dictionary with 4th key added and corresponding value
+print(new_set) #Prints the new set of processed numbers
